@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claimdesk / Intake</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="/"><span class="brand-mark">C</span><span>claimdesk</span></a><div class="service-state"><span class="pulse"></span> intake service <span class="mono">v0.1</span></div></header>
+  <main class="shell">
+    <section class="intro"><div><p class="eyebrow">MICROSERVICE 03 / CLAIM INTAKE</p><h1>Turn an incident<br><em>into a clear next step.</em></h1><p class="lede">Submit, collect, and validate property claims with explainable checks before a human review.</p></div><div class="intro-note"><span class="note-number">01</span><span>Submission<br>workspace</span></div></section>
+    <section class="metrics"><div><span>Open claims</span><strong id="open-count">—</strong></div><div><span>Needs attention</span><strong id="attention-count">—</strong></div><div><span>Coverage at risk</span><strong id="risk-total">—</strong></div><div class="metric-action"><button class="primary" id="new-claim">+ New claim</button></div></section>
+    <section class="workspace"><div class="claims-panel"><div class="section-heading"><div><p class="eyebrow">LIVE QUEUE</p><h2>Claims to review</h2></div><select id="status-filter"><option value="">All statuses</option><option value="DOCUMENT_VERIFICATION">Document verification</option><option value="MANUAL_REVIEW">Manual review</option><option value="SUBMITTED">Submitted</option></select></div><div id="claims-list" class="claims-list"></div></div><aside class="detail-panel" id="detail-panel"><div class="empty-state"><span class="empty-icon">↗</span><h3>Select a claim</h3><p>Choose a claim from the queue to inspect documents and run validation checks.</p></div></aside></section>
+    <section class="api-strip"><span class="api-dot"></span><span>API available at</span><code>/docs</code><a href="/docs" target="_blank">Open Swagger UI ↗</a></section>
+  </main>
+  <div id="modal" class="modal hidden"><div class="modal-card"><button class="close" id="close-modal">×</button><p class="eyebrow">NEW INTAKE</p><h2>Submit a claim</h2><form id="claim-form"><label>Policy number<select name="policy_number" id="policy-number" required></select></label><label>Claim type<input name="claim_type" value="Water damage" required /></label><div class="form-grid"><label>Incident date<input type="date" name="incident_date" required /></label><label>Claimed amount (Rs)<input type="number" name="claimed_amount" min="1" required /></label></div><label>Incident location<input name="incident_location" placeholder="City or address" required /></label><label>What happened?<textarea name="incident_description" minlength="10" required placeholder="Describe the incident and resulting damage"></textarea></label><button class="primary" type="submit">Create claim <span>↗</span></button><p id="form-message" class="form-message"></p></form></div></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
